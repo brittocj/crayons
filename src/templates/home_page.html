@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+<title>Crayons</title>
+
+{% block base_head %}
+<link rel='stylesheet' href='{% static "css/main.css" %}' >
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+
+      $("#myModal").modal('show');
+  });
+</script>
+{% endblock %}
+
+{% block content %}
+
+<a style="font-size: 30px">One stop shop for all your needs, </a><a style= "font-size: 30px; color:chartreuse">C</a><a style= "font-size: 30px; color:green">r</a><a style= "font-size: 30px; color:blue">a</a><a style= "font-size: 30px; color:purple">y</a><a style= "font-size: 30px; color:red">o</a><a style= "font-size: 30px; color:orange">n</a><a style= "font-size: 30px; color:yellow">s</a><a style= "font-size: 30px; color:greenyellow">!</a>
+<p></p>
+<div id="demo" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href='{% url "products:list" %}' target="_self">
+        <img src="{% static 'img/img2.jpg' %}" alt="Super Sale!" width="1100" height="500">
+        </a>
+        <div class="carousel-caption">
+          <h3>Super Sale!</h3>
+          <p>We have such a great time at Crayons!</p>
+        </div>   
+      </div>
+      <div class="carousel-item">
+          <a href='{% url "products:list" %}' target="_self">
+        <img src="{% static 'img/img1.jpg' %}" alt="Super Sale!" width="1100" height="500"></a>
+        <div class="carousel-caption">
+          <h3 style="color:black">Super Sale!</h3>
+          <p style="color:black">Thank you, for shopping!</p>
+        </div>   
+      </div>
+      <div class="carousel-item">
+          <a href='{% url "products:list" %}' target="_self">
+        <img src="{% static 'img/img3.jpg' %}" alt="Super Sale!" width="1100" height="500"></a>
+        <div class="carousel-caption">
+          <h3>Super Sale!</h3>
+          <p>Shop it till you drop.</p>
+        </div>   
+      </div>
+      <div class="carousel-item">
+          <a href='{% url "products:list" %}' target="_self">
+        <img src="{% static 'img/img4.jpg' %}" alt="Super Sale!" width="1100" height="500"></a>
+        <div class="carousel-caption">
+          <h3 style="color:black">Super Sale!</h3>
+          <p style="color:black">Amazing offers.</p>
+        </div>   
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+  
+ <p></p> 
+{% if request.user.is_authenticated %}
+<div class='row'>
+  <div class='col'>
+  <h1>Premium</h1>
+  {{ premium_content }}
+  </div>
+</div>
+{% endif %}
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h4 class="modal-title"><a style= "font-size: 30px; color:chartreuse"><img src="{% static 'img/crayons_logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="Crayons_logo" style="position:absolute; bottom:175px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C</a><a style= "font-size: 30px; color:green">r</a><a style= "font-size: 30px; color:blue">a</a><a style= "font-size: 30px; color:purple">y</a><a style= "font-size: 30px; color:red">o</a><a style= "font-size: 30px; color:orange">n</a><a style= "font-size: 30px; color:yellow">s</a><a style= "font-size: 30px; color:chartreuse">,</a> an ecommerce project.</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This is a Django project done by <strong>Antony Britto C J</strong></p>
+                <h6 style="font: size 1px;">All product names, logos, images and brands used in this website are property of their respective owners.</h6>
+                <a style="float: right;"" class="btn btn-default" href="/contact/" target="_self">Contact</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
